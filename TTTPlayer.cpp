@@ -1,4 +1,6 @@
 #include "TTTPlayer.hpp"
 
-int TTTPlayer::getBoard() { return myBoard; }
+TTTPlayer::TTTPlayer() : myBoard(0) {}
+
+int TTTPlayer::getBoard() const { return myBoard; }
 void TTTPlayer::reset() { myBoard = 0; }

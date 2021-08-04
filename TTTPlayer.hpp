@@ -6,11 +6,13 @@
 class TTTPlayer
 {
 public:
-    int getBoard() const;
-    virtual int getMove(int opponentBoard) = 0;
-    void reset();
+    TTTPlayer();
 
-private:
+    int getBoard() const;
+    virtual void updateMove(int opponentBoard) = 0;
+    void reset();
+    
+protected:
     int myBoard;
 };
 
