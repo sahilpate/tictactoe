@@ -1,5 +1,7 @@
-#ifndef TTTHCOMPPLAYER_HPP
+#ifndef TTTCOMPPLAYER_HPP
 #define TTTCOMPPLAYER_HPP
+
+#include "TTTPlayer.hpp"
 
 class TTTCompPlayer : public TTTPlayer
 {

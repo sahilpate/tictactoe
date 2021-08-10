@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -c -Wall -Wextra -Werror -pedantic -std=c++17
-OBJS = TTTGame.o TTTPlayer.o TTTComputerPlayer.o TTTPHumanPlayer.o
+OBJS = TTTGame.o TTTPlayer.o TTTCompPlayer.o TTTHumanPlayer.o main.o
 EXE = tictactoe
 
 all: $(EXE)
@@ -14,11 +14,14 @@ TTTGame.o: TTTGame.cpp TTTGame.hpp
 TTTPlayer.o: TTTPlayer.cpp TTTPlayer.hpp
 	$(CC) TTTPlayer.cpp TTTPlayer.hpp $(CFLAGS)
 
-TTTComputerPlayer.o: TTTComputerPlayer.cpp TTTComputerPlayer.hpp
-	$(CC) TTTComputerPlayer.cpp TTTComputerPlayer.hpp $(CFLAGS)
+TTTCompPlayer.o: TTTCompPlayer.cpp TTTCompPlayer.hpp
+	$(CC) TTTCompPlayer.cpp TTTCompPlayer.hpp $(CFLAGS)
 
-TTTPlayer.o: TTTHumanPlayer.cpp TTTHumanPlayer.hpp
+TTTHumanPlayer.o: TTTHumanPlayer.cpp TTTHumanPlayer.hpp
 	$(CC) TTTHumanPlayer.cpp TTTHumanPlayer.hpp $(CFLAGS)
+
+main.o: main.cpp
+	$(CC) main.cpp $(CFLAGS)
 
 clean:
 	rm $(EXE) $(OBJS) *.gch

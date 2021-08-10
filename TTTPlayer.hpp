@@ -11,6 +11,8 @@ public:
     int getBoard() const;
     virtual void updateMove(int opponentBoard) = 0;
     void reset();
+
+    virtual ~TTTPlayer();
     
 protected:
     int myBoard;

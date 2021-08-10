@@ -1,6 +1,8 @@
 #ifndef TTTHUMANPLAYER_HPP
 #define TTTHUMANPLAYER_HPP
 
+#include "TTTPlayer.hpp"
+
 class TTTHumanPlayer : public TTTPlayer
 {
 public:

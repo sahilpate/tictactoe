@@ -2,6 +2,8 @@
 #define TTTGAME_HPP
 
 #include "TTTPlayer.hpp"
+#include "TTTCompPlayer.hpp"
+#include "TTTHumanPlayer.hpp"
 
 class TTTGame
 {
@@ -19,8 +21,10 @@ private:
     enum Winner { UNFINISHED, P1, P2, TIE };
 
     TTTPlayer *players[4];
+    TTTCompPlayer *comps[2];
+    TTTHumanPlayer *hums[2];
     int playerIndex[2];
-    const static int winConditions[] = { 7, 56, 448, 73, 146, 292, 273, 84 }
+    const int winConditions[8] = { 7, 56, 448, 73, 146, 292, 273, 84 };
 
     void printBoard();
     Winner checkWin();
