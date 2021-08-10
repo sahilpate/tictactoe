@@ -13,12 +13,16 @@ public:
     bool checkPlayAgain() const;
     void resetGame();
 
+    ~TTTGame();
+
 private:
     enum Winner { UNFINISHED, P1, P2, TIE };
 
-    TTTPlayer *player[4];
-    int player1, player2;
+    TTTPlayer *players[4];
+    int playerIndex[2];
+    const static int winConditions[] = { 7, 56, 448, 73, 146, 292, 273, 84 }
 
+    void printBoard();
     Winner checkWin();
 };
 
