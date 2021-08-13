@@ -6,19 +6,27 @@ TTTHumanPlayer::TTTHumanPlayer() {}
 
 void TTTHumanPlayer::updateMove(int opponentBoard)
 {
-    int curBoard = myBoard & opponentBoard;
-    int curMove;
+    int curBoard = myBoard | opponentBoard;
+    int userIn = -1;
     bool validMove = false;
 
     while(!validMove)
     {
-        std::cout << "Input a move [0-9]: ";
-        std::cin >> curMove;
+        int newPos;
 
-        if(!((1 << curMove) & curBoard)) validMove = true;
-        else
+        std::cout << "Input a move [1-9]: ";
+        std::cin >> userIn;
+
+        newPos = 1 << (userIn - 1);
+
+        if(!(newPos & curBoard) && userIn > 0 && userIn < 10)
         {
-            std::cout << "Invalid input.";
+            myBoard |= newPos;
+            validMove = true;
         }
+        else
+            std::cout << "Invalid input." << std::endl;
     }
+
+    return;
 }

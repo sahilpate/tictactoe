@@ -11,8 +11,8 @@ TTTGame::TTTGame()
 
     for(int i = 0; i < 2; ++i)
     {
-        players[i] = hums[i] = new TTTHumanPlayer;
-        players[i+2] = comps[i] = new TTTCompPlayer;
+        players[i] = new TTTHumanPlayer;
+        players[i+2] = new TTTCompPlayer;
     }
 }
 
@@ -23,10 +23,9 @@ void TTTGame::selectPlayers()
 
     for(int i = 1; i < 3; ++i)
     {
-        std::cout << "Should Player " << i << " be a human or computer? [H/C]: ";
-
-        while (userIn != 'H' || userIn != 'C')
+        while (userIn != 'H' && userIn != 'C')
         {
+			std::cout << "Should Player " << i << " be a human or computer? [H/C]: ";
             std::cin >> userIn;
             
             if(userIn == 'H')
@@ -34,7 +33,7 @@ void TTTGame::selectPlayers()
             else if(userIn == 'C')
                 playerIndex[i-1] = curComp++;
             else
-                std::cout << "Invalid input, please enter an 'H' or a 'C'.";
+                std::cout << "Invalid input, please enter an 'H' or a 'C'." << std::endl << std::endl;
         }
 
         userIn = '\0';
@@ -52,10 +51,14 @@ void TTTGame::playGame()
 		std::cout << "Player 1's turn." << std::endl;
         players[playerIndex[0]]->updateMove(players[playerIndex[1]]->getBoard());
 		printBoard();
+		std::cout << std::endl;
+
+		if((gameState = checkWin()) != UNFINISHED) break;
 
 		std::cout << "Player 2's turn." << std::endl;
         players[playerIndex[1]]->updateMove(players[playerIndex[0]]->getBoard());
 		printBoard();
+		std::cout << std::endl;
 
         gameState = checkWin();
     }
@@ -86,7 +89,7 @@ bool TTTGame::checkPlayAgain() const
 {
     char userIn = '\0';
 
-    while(userIn != 'Y' || userIn != 'N')
+    while(userIn != 'Y' && userIn != 'N')
     {
         std::cout << "Would you like to play again? [Y/N]: ";
         std::cin >> userIn;
@@ -153,12 +156,4 @@ TTTGame::~TTTGame()
 {
 	for(int i = 0; i < 4; ++i)
 		delete players[i];
-
-	/*
-    for(int i = 0; i < 2; ++i)
-	{
-		delete comps[i];
-		delete hums[i];
-	}
-	*/
 }

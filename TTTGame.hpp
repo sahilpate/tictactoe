@@ -21,8 +21,6 @@ private:
     enum Winner { UNFINISHED, P1, P2, TIE };
 
     TTTPlayer *players[4];
-    TTTCompPlayer *comps[2];
-    TTTHumanPlayer *hums[2];
     int playerIndex[2];
     const int winConditions[8] = { 7, 56, 448, 73, 146, 292, 273, 84 };
 
